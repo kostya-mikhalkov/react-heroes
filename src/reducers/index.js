@@ -29,6 +29,11 @@ const reducer = (state = initialState, action) => {
                 heroes: state.heroes.filter(item => item.id !== action.payload),
                 id: action.payload
             }
+        case 'HEROES_PUSHED':
+            return {
+                ...state,
+                heroes: [...state.heroes, action.payload],
+            }
         default: return state
     }
 }

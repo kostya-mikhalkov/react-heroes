@@ -23,3 +23,10 @@ export const heroesDeleted = (id) => {
         payload: id
     }
 }
+
+export const heroesPushed = (data) => {
+    return {
+        type: 'HEROES_PUSHED',
+        payload: data
+    }
+}

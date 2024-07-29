@@ -28,8 +28,6 @@ const HeroesList = () => {
     useEffect(() => {
         if (id !== null) {
             requestDelete("http://localhost:3001/heroes", id)
-            .then(data => data.json())
-            .then(res => console.log(res))
         }
     }, [id])
 

@@ -1,4 +1,7 @@
-
+import { useState, useEffect } from "react";
+import { useHttp } from "../../hooks/http.hook";
+import { useDispatch } from "react-redux";
+import { heroesPushed } from "../../actions";
 
 // Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать
@@ -11,8 +14,18 @@
 // данных из фильтров
 
 const HeroesAddForm = () => {
+    const [state, setState] = useState({});
+    const dispatch = useDispatch();
+    const {postRequest} = useHttp();
+    const requestPost = (e) => {
+        e.preventDefault();
+        postRequest('http://localhost:3001/heroes', state)
+        .then(data => dispatch(heroesPushed(data)))
+    }
+
     return (
-        <form className="border p-4 shadow-lg rounded">
+        <form className="border p-4 shadow-lg rounded"
+              onSubmit={(e) => requestPost(e)}>
             <div className="mb-3">
                 <label htmlFor="name" className="form-label fs-4">Имя нового героя</label>
                 <input 
@@ -21,7 +34,11 @@ const HeroesAddForm = () => {
                     name="name" 
                     className="form-control" 
                     id="name" 
-                    placeholder="Как меня зовут?"/>
+                    placeholder="Как меня зовут?"
+                    onChange={(e) => setState({
+                        ...state,
+                        name: e.target.value
+                    })}/>
             </div>
 
             <div className="mb-3">
@@ -32,7 +49,11 @@ const HeroesAddForm = () => {
                     className="form-control" 
                     id="text" 
                     placeholder="Что я умею?"
-                    style={{"height": '130px'}}/>
+                    style={{"height": '130px'}}
+                    onChange={(e) => setState({
+                        ...state,
+                        description: e.target.value
+                    })}/>
             </div>
 
             <div className="mb-3">
@@ -41,7 +62,11 @@ const HeroesAddForm = () => {
                     required
                     className="form-select" 
                     id="element" 
-                    name="element">
+                    name="element"
+                    onChange={(e) => setState({
+                        ...state,
+                        element: e.target.value
+                    })}>
                     <option >Я владею элементом...</option>
                     <option value="fire">Огонь</option>
                     <option value="water">Вода</option>
