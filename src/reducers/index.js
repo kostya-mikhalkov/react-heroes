@@ -3,7 +3,8 @@ const initialState = {
     heroes: [],
     heroesLoadingStatus: 'idle',
     filters: [],
-    id: null
+    id: null,
+    activeFilter: 'all'
 }
 
 const reducer = (state = initialState, action) => {
@@ -39,30 +40,50 @@ const reducer = (state = initialState, action) => {
                 allHeroes: [...state.heroes, action.payload],
             }
         case 'FILTER_FIRE':
+            // return {
+            //     ...state,
+            //     heroes: state.allHeroes.filter(item => item.element == 'fire'),
+            // }
             return {
                 ...state,
-                heroes: state.allHeroes.filter(item => item.element == 'fire'),
+                activeFilter: 'fire',
             }
         case 'FILTER_WATER':
+            // return {
+            //     ...state,
+            //     heroes: state.allHeroes.filter(item => item.element == 'water'),
+            // }
             return {
                 ...state,
-                heroes: state.allHeroes.filter(item => item.element == 'water'),
+                activeFilter: 'water',
             }
         case 'FILTER_WIND':
+            // return {
+            //     ...state,
+            //     heroes: state.allHeroes.filter(item => item.element == 'wind'),
+            // }
             return {
                 ...state,
-                heroes: state.allHeroes.filter(item => item.element == 'wind'),
+                activeFilter: 'wind',
             }
         case 'FILTER_EARTH':
+            // return {
+            //     ...state,
+            //     heroes: state.allHeroes.filter(item => item.element == 'earth'),
+            // }
             return {
                 ...state,
-                heroes: state.allHeroes.filter(item => item.element == 'earth'),
+                activeFilter: 'earth',
             }
         case 'FILTER_ALL':
             console.log('render all')
+            // return {
+            //     ...state,
+            //     heroes: state.allHeroes,
+            // }
             return {
                 ...state,
-                heroes: state.allHeroes,
+                activeFilter: 'all',
             }
         default: return state
     }

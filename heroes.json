@@ -7,22 +7,22 @@
       "element": "fire"
     },
     {
-      "name": "hghg",
-      "description": "vcxv",
-      "element": "fire",
-      "id": 8
-    },
-    {
       "element": "wind",
       "name": "dxcx",
       "description": "cxcx",
       "id": 9
     },
     {
-      "name": "hghg",
-      "description": "dgfsd",
-      "element": "water",
+      "name": "jack",
+      "description": "sdasd",
+      "element": "earth",
       "id": 10
+    },
+    {
+      "name": "хэнк",
+      "description": "свсвс",
+      "element": "water",
+      "id": 11
     }
   ],
   "filters": [

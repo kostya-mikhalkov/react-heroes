@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import '../heroesListItem/heroesListItem.css'
+import { selectorReduceFire } from '../../selector/selector';
 
 import { heroesFetching, heroesFetched, heroesFetchingError } from '../../actions';
 import HeroesListItem from "../heroesListItem/HeroesListItem";
@@ -14,7 +15,8 @@ import Spinner from '../spinner/Spinner';
 // Удаление идет и с json файла при помощи метода DELETE
 
 const HeroesList = () => {
-    const {heroes, heroesLoadingStatus, id} = useSelector(state => state);
+    const heroes = useSelector(selectorReduceFire)
+    const {heroesLoadingStatus, id} = useSelector(state => state);
     const dispatch = useDispatch();
     const {request, requestDelete} = useHttp();
 

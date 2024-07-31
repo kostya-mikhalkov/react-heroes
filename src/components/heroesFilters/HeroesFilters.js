@@ -13,6 +13,7 @@ import { filterFire, filterEarth, filterWater, filterWind, filterAll } from "../
 const HeroesFilters = () => {
     const [state, setState] = useState('');
     const fire = useSelector(selectorReduceFire)
+    console.log(fire)
     const dispatch = useDispatch();
 
     return (
@@ -26,7 +27,7 @@ const HeroesFilters = () => {
                                 setState('all')
                             }}>Все</button>
                     <button className={state === 'fire' ? "btn btn-danger active": "btn btn-danger"} onClick={() => {
-                        dispatch(filterFire(fire))
+                        dispatch(filterFire())
                         setState('fire')
                         }}>Огонь</button>
                     <button className={state === 'water' ? "btn btn-primary active" : "btn btn-primary"}

@@ -1,10 +1,18 @@
 import { createSelector } from "reselect";
 
 const getState = state => {
-    console.log('render fire')
-    return state.allHeroes};
+    return state.allHeroes
+};
+const getFilter = state => state.activeFilter;
 
 export const selectorReduceFire = createSelector(
-    getState,
-    state => state.filter(item => item.element === 'fire')
+    [getState, getFilter],
+    (heroes, filter) => {
+        console.log('hi')
+        if (filter === 'all') {
+            return heroes;
+        } else {
+            return heroes.filter(item => item.element === filter)
+        }
+    }
 )
