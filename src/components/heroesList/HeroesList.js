@@ -1,6 +1,8 @@
 import {useHttp} from '../../hooks/http.hook';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
+import '../heroesListItem/heroesListItem.css'
 
 import { heroesFetching, heroesFetched, heroesFetchingError } from '../../actions';
 import HeroesListItem from "../heroesListItem/HeroesListItem";
@@ -21,7 +23,6 @@ const HeroesList = () => {
         request("http://localhost:3001/heroes")
             .then(data => dispatch(heroesFetched(data)))
             .catch(() => dispatch(heroesFetchingError()))
-        console.log(heroes)
         // eslint-disable-next-line
     }, []);
 
@@ -43,7 +44,15 @@ const HeroesList = () => {
         }
 
         return arr.map(({id, ...props}) => {
-            return <HeroesListItem key={id} id={id} {...props}/>
+            return (
+                <CSSTransition
+                    key={id}
+                    timeout={500}
+                    className="fade"
+                >
+                    <HeroesListItem key={id} id={id} {...props}/>
+                </CSSTransition>
+            )
         })
     }
 

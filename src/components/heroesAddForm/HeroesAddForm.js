@@ -14,14 +14,22 @@ import { heroesPushed } from "../../actions";
 // данных из фильтров
 
 const HeroesAddForm = () => {
+    const [name, setName] = useState('');
+    const [descr, setDescr] = useState('');
     const [state, setState] = useState({});
     const dispatch = useDispatch();
     const {postRequest} = useHttp();
     const requestPost = (e) => {
         e.preventDefault();
         postRequest('http://localhost:3001/heroes', state)
-        .then(data => dispatch(heroesPushed(data)))
+        .then(data => {
+            dispatch(heroesPushed(data))
+            setState({})
+            setName('');
+            setDescr('')
+        })     
     }
+    
 
     return (
         <form className="border p-4 shadow-lg rounded"
@@ -31,14 +39,18 @@ const HeroesAddForm = () => {
                 <input 
                     required
                     type="text" 
-                    name="name" 
+                    name='name'
                     className="form-control" 
                     id="name" 
                     placeholder="Как меня зовут?"
-                    onChange={(e) => setState({
-                        ...state,
-                        name: e.target.value
-                    })}/>
+                    value={name}
+                    onChange={(e) => {
+                        setState({
+                            ...state,
+                            name: e.target.value
+                        })
+                        setName(e.target.value)
+                    }}/>
             </div>
 
             <div className="mb-3">
@@ -50,10 +62,15 @@ const HeroesAddForm = () => {
                     id="text" 
                     placeholder="Что я умею?"
                     style={{"height": '130px'}}
-                    onChange={(e) => setState({
+                    value={descr}
+                    onChange={(e) => {
+                        setState({
                         ...state,
                         description: e.target.value
-                    })}/>
+                                })
+                        setDescr(e.target.value)
+                    }
+                    }/>
             </div>
 
             <div className="mb-3">

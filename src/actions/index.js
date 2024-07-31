@@ -30,3 +30,34 @@ export const heroesPushed = (data) => {
         payload: data
     }
 }
+
+export const filterFire = () => {
+    return {
+        type: 'FILTER_FIRE',
+    }
+}
+
+export const filterWater = () => {
+    return {
+        type: 'FILTER_WATER',
+    }
+}
+
+export const filterWind = () => {
+    return {
+        type: 'FILTER_WIND',
+    }
+}
+
+export const filterEarth = () => {
+    return {
+        type: 'FILTER_EARTH',
+    }
+}
+
+export const filterAll = () => {
+    console.log('render')
+    return {
+        type: 'FILTER_ALL',
+    }
+}

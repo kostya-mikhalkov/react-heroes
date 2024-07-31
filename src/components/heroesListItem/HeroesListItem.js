@@ -1,8 +1,12 @@
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 import { heroesDeleted } from "../../actions";
+import { CSSTransition } from 'react-transition-group';
+import './heroesListItem.css';
 
 const HeroesListItem = ({ name, description, element, id }) => {
 	const dispatch = useDispatch();
+	const [show, setShow] = useState(false)
 	let elementClassName;
 	console.log(id)
 	switch (element) {
@@ -41,7 +45,10 @@ const HeroesListItem = ({ name, description, element, id }) => {
 					type="button"
 					className="btn-close btn-close"
 					aria-label="Close"
-					onClick={() => dispatch(heroesDeleted(id))}
+					onClick={() => {
+						dispatch(heroesDeleted(id));
+						setShow(show => !show)
+					}}
 				></button>
 			</span>
 		</li>

@@ -1,4 +1,5 @@
 const initialState = {
+    allHeroes: [],
     heroes: [],
     heroesLoadingStatus: 'idle',
     filters: [],
@@ -15,6 +16,7 @@ const reducer = (state = initialState, action) => {
         case 'HEROES_FETCHED':
             return {
                 ...state,
+                allHeroes: action.payload,
                 heroes: action.payload,
                 heroesLoadingStatus: 'idle'
             }
@@ -26,6 +28,7 @@ const reducer = (state = initialState, action) => {
         case 'HEROES_DELETED':
             return {
                 ...state,
+                allHeroes: state.allHeroes.filter(item => item.id !== action.payload),
                 heroes: state.heroes.filter(item => item.id !== action.payload),
                 id: action.payload
             }
@@ -33,6 +36,33 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 heroes: [...state.heroes, action.payload],
+                allHeroes: [...state.heroes, action.payload],
+            }
+        case 'FILTER_FIRE':
+            return {
+                ...state,
+                heroes: state.allHeroes.filter(item => item.element == 'fire'),
+            }
+        case 'FILTER_WATER':
+            return {
+                ...state,
+                heroes: state.allHeroes.filter(item => item.element == 'water'),
+            }
+        case 'FILTER_WIND':
+            return {
+                ...state,
+                heroes: state.allHeroes.filter(item => item.element == 'wind'),
+            }
+        case 'FILTER_EARTH':
+            return {
+                ...state,
+                heroes: state.allHeroes.filter(item => item.element == 'earth'),
+            }
+        case 'FILTER_ALL':
+            console.log('render all')
+            return {
+                ...state,
+                heroes: state.allHeroes,
             }
         default: return state
     }

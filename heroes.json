@@ -7,16 +7,22 @@
       "element": "fire"
     },
     {
-      "id": 2,
-      "name": "Неизвестный герой",
-      "description": "Скрывающийся в тени",
-      "element": "wind"
+      "name": "hghg",
+      "description": "vcxv",
+      "element": "fire",
+      "id": 8
     },
     {
-      "name": "Bill Thorntohn",
-      "description": "csc",
-      "element": "fire",
-      "id": 5
+      "element": "wind",
+      "name": "dxcx",
+      "description": "cxcx",
+      "id": 9
+    },
+    {
+      "name": "hghg",
+      "description": "dgfsd",
+      "element": "water",
+      "id": 10
     }
   ],
   "filters": [
