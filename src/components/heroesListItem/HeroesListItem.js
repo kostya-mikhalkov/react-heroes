@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { heroesDeleted } from "../../actions";
+import { heroesDeleted } from "../../slice/sliceHeroes";
 import { CSSTransition } from 'react-transition-group';
 import './heroesListItem.css';
 
@@ -8,7 +8,6 @@ const HeroesListItem = ({ name, description, element, id }) => {
 	const dispatch = useDispatch();
 	const [show, setShow] = useState(false)
 	let elementClassName;
-	console.log(id)
 	switch (element) {
 		case "fire":
 			elementClassName = "bg-danger bg-gradient";

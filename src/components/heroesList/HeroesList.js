@@ -5,9 +5,10 @@ import { CSSTransition } from 'react-transition-group';
 import '../heroesListItem/heroesListItem.css'
 import { selectorReduceFire } from '../../selector/selector';
 
-import { heroesFetching, heroesFetched, heroesFetchingError } from '../../actions';
+import { heroesFetching, heroesFetched, heroesFetchingError } from '../../slice/sliceHeroes';
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
+import { fetchHeroes } from '../../actions';
 
 // Задача для этого компонента:
 // При клике на "крестик" идет удаление персонажа из общего состояния

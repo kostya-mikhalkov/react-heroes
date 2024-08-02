@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from "reselect";
 import { useState } from "react";
 import { selectorReduceFire } from "../../selector/selector";
-import { filterFire, filterEarth, filterWater, filterWind, filterAll } from "../../actions";
+import { filterFire, filterEarth, filterWater, filterWind, filterAll } from "../../slice/sliceHeroes";
 // Задача для этого компонента:
 // Фильтры должны формироваться на основании загруженных данных
 // Фильтры должны отображать только нужных героев при выборе
@@ -32,8 +32,10 @@ const HeroesFilters = () => {
                         }}>Огонь</button>
                     <button className={state === 'water' ? "btn btn-primary active" : "btn btn-primary"}
                             onClick={() => {
-                                dispatch(filterWater())
-                                setState('water')
+                                setTimeout(() => {
+                                    dispatch(filterWater())
+                                    setState('water')
+                                }, 1000)
                             }}>Вода</button>
                     <button className={state === 'wind' ? "btn btn-success active" : "btn btn-success"}
                             onClick={() => {

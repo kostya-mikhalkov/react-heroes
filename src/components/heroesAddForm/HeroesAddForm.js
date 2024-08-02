@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHttp } from "../../hooks/http.hook";
 import { useDispatch } from "react-redux";
-import { heroesPushed } from "../../actions";
+import { heroesPushed } from "../../slice/sliceHeroes";
 
 // Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать

@@ -1,63 +1,28 @@
-export const heroesFetching = () => {
-    return {
-        type: 'HEROES_FETCHING'
-    }
+import { createAction } from "@reduxjs/toolkit";
+
+export const fetchHeroes = (request) => (dispatch) => {
+    dispatch(heroesFetching());
+    request("http://localhost:3001/heroes")
+        .then(data => dispatch(heroesFetched(data)))
+        .catch(() => dispatch(heroesFetchingError()))
 }
 
-export const heroesFetched = (heroes) => {
-    return {
-        type: 'HEROES_FETCHED',
-        payload: heroes
-    }
-}
+export const heroesFetching = createAction('HEROES_FETCHING')
 
-export const heroesFetchingError = () => {
-    return {
-        type: 'HEROES_FETCHING_ERROR'
-    }
-}
+export const heroesFetched = createAction('HEROES_FETCHED')
 
-export const heroesDeleted = (id) => {
-    return {
-        type: 'HEROES_DELETED',
-        payload: id
-    }
-}
+export const heroesFetchingError = createAction('HEROES_FETCHING_ERROR');
 
-export const heroesPushed = (data) => {
-    return {
-        type: 'HEROES_PUSHED',
-        payload: data
-    }
-}
+export const heroesDeleted = createAction('HEROES_DELETED')
 
-export const filterFire = () => {
-    return {
-        type: 'FILTER_FIRE',
-    }
-}
+export const heroesPushed = createAction('HEROES_PUSHED');
 
-export const filterWater = () => {
-    return {
-        type: 'FILTER_WATER',
-    }
-}
+export const filterFire = createAction('FILTER_FIRE');
 
-export const filterWind = () => {
-    return {
-        type: 'FILTER_WIND',
-    }
-}
+export const filterWater = createAction('FILTER_WATER')
 
-export const filterEarth = () => {
-    return {
-        type: 'FILTER_EARTH',
-    }
-}
+export const filterWind = createAction('FILTER_WIND')
 
-export const filterAll = () => {
-    console.log('render')
-    return {
-        type: 'FILTER_ALL',
-    }
-}
+export const filterEarth = createAction('FILTER_EARTH')
+
+export const filterAll = createAction('FILTER_ALL')
